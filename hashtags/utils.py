@@ -17,7 +17,7 @@ from django.db.utils import IntegrityError
 from django.utils.encoding import force_unicode
 from hashtags.models import Hashtag, HashtaggedItem
 
-hashtag_pattern = re.compile(r'[#]+([-_a-zA-Z0-9]+)')
+hashtag_pattern = re.compile(r'[#]+([\S]+)')
 
 def link_hashtags_to_model(text, object):
     # parsing text looking for hashtags to be linked with the object
