@@ -69,5 +69,5 @@ def urlize_hashtags(text):
     def repl(m):
         hashtag = m.group(1)
         url = reverse('hashtagged_item_list', kwargs={'hashtag': hashtag})
-        return '<a href="%s">&#35;%s</a>' % (url, hashtag)
+        return '<a href="%s" class="hashtag">&#35;%s</a>' % (url, hashtag)
     return hashtag_pattern.sub(repl, force_unicode(text))
