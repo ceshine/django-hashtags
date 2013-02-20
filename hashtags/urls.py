@@ -21,7 +21,15 @@ index_url = url(
 hashtagged_item_list_url = url(
     regex  = '^(?P<hashtag>[-\w]+)/$',
     view   = hashtagged_item_list,
-    name   = 'hashtagged_item_list'
+    kwargs = {'paginate_by': 10},
+    name   = 'hashtagged_item_list',
 )
 
-urlpatterns = patterns('', index_url, hashtagged_item_list_url)
+hashtagged_item_list_url_paginated = url(
+    regex  = '^(?P<hashtag>[-\w]+)/(?P<page>[1-9][0-9]*)/$',
+    view   = hashtagged_item_list,
+    kwargs = {'paginate_by': 10},
+    name   = 'hashtagged_item_list_pagenated',
+)
+
+urlpatterns = patterns('', index_url, hashtagged_item_list_url, hashtagged_item_list_url_paginated)

@@ -63,6 +63,7 @@ def hashtagged_item_list(request, hashtag, paginate_by=None, page=None,
     except ObjectDoesNotExist:
         raise Http404("Hashtag %s doesn't exist." % hashtag)
     queryset = HashtaggedItem.objects.filter(hashtag=hashtag)
+    queryset = [item.content_object for item in queryset]
     if paginate_by:
         paginator = Paginator(queryset, paginate_by,
                               allow_empty_first_page=allow_empty)
